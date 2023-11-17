@@ -27,7 +27,7 @@ const SignUp = () => {
                 Already have an account?
                 <Link
                   to="/login"
-                  className="bg-gradient-to-r from-green-600 to-green-500 text-white px-6 py-4 border-b border-blue text-blue mx-2"
+                  className="btn-toggle-style px-6 py-4 border-b border-blue text-blue mx-2"
                 >
                   Log in
                 </Link>

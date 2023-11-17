@@ -58,8 +58,12 @@ const Navbar = () => {
         Blogs
       </NavLink>
 
-      <NavLink to="/sign-up" className="mx-5 uppercase btn-gradent-swipe-l2r">
-        <span className="relative z-10">
+      <NavLink
+        style={activeRouteStyle}
+        to="/sign-up"
+        className="mx-5 uppercase btn-gradent-swipe-l2r "
+      >
+        <span className="relative z-10 hover:text-white">
           <FaUserPlus className="inline mr-1" /> Sign Up
         </span>
       </NavLink>
