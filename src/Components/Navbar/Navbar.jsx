@@ -55,7 +55,7 @@ const Navbar = () => {
         Blogs
       </NavLink>
 
-      <NavLink to="/signup" className="mx-5 uppercase btn-gradent-swipe-r2l">
+      <NavLink to="/signup" className="mx-5 uppercase btn-gradent-swipe-l2r">
         <span className="relative z-10">Sign Up</span>
       </NavLink>
     </>
@@ -142,7 +142,7 @@ const Navbar = () => {
             </>
           ) : (
             <div>
-              <NavLink to="/login" className="mx-5 btn-gradent-swipe-l2r">
+              <NavLink to="/login" className="mx-5 btn-gradent-swipe-r2l">
                 <span className="relative z-10 ">Log In</span>
               </NavLink>
             </div>
