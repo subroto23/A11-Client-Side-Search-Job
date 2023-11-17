@@ -1,6 +1,9 @@
 import { Link, NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
+import { FaUserPlus } from "react-icons/fa";
+import { GrLogin } from "react-icons/gr";
+import { IoMenuSharp } from "react-icons/io5";
 const Navbar = () => {
   const { user, loading, handleLogOut } = useContext(AuthContext);
   console.log(user);
@@ -56,7 +59,9 @@ const Navbar = () => {
       </NavLink>
 
       <NavLink to="/signup" className="mx-5 uppercase btn-gradent-swipe-l2r">
-        <span className="relative z-10">Sign Up</span>
+        <span className="relative z-10">
+          <FaUserPlus className="inline mr-1" /> Sign Up
+        </span>
       </NavLink>
     </>
   );
@@ -69,25 +74,12 @@ const Navbar = () => {
             <div className="dropdown">
               <div>
                 <label tabIndex={0} className="btn btn-ghost lg:hidden">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M4 6h16M4 12h8m-8 6h16"
-                    />
-                  </svg>
+                  <IoMenuSharp className="text-2xl" />
                 </label>
               </div>
               <ul
                 tabIndex={0}
-                className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow  rounded-box w-52"
+                className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-white rounded-box w-52"
               >
                 {navLink}
               </ul>
@@ -143,7 +135,10 @@ const Navbar = () => {
           ) : (
             <div>
               <NavLink to="/login" className="mx-5 btn-gradent-swipe-r2l">
-                <span className="relative z-10 ">Log In</span>
+                <span className="relative z-10 ">
+                  <GrLogin className="mr-2 md:inline-block hidden " />
+                  Log In
+                </span>
               </NavLink>
             </div>
           )}
