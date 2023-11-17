@@ -58,7 +58,7 @@ const Navbar = () => {
         Blogs
       </NavLink>
 
-      <NavLink to="/signup" className="mx-5 uppercase btn-gradent-swipe-l2r">
+      <NavLink to="/sign-up" className="mx-5 uppercase btn-gradent-swipe-l2r">
         <span className="relative z-10">
           <FaUserPlus className="inline mr-1" /> Sign Up
         </span>

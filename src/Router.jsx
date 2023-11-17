@@ -3,6 +3,7 @@ import ErrorPage from "./Components/ErrorPage/ErrorPage";
 import Root from "./Components/Root/Root";
 import AllJobs from "./Components/AllJobs/AllJobs";
 import Home from "./Pages/Home";
+import SignUp from "./Components/SignUp/SignUp";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -12,6 +13,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "/sign-up",
+        element: <SignUp />,
       },
       {
         path: "/all-jobs",
