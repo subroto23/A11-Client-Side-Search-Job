@@ -98,7 +98,7 @@ const Navbar = () => {
                 alt=""
               />
               <span className="text-green-500 font-semibold hover:text-gray-500">
-                FindJobs
+                SearchJobs
               </span>
             </NavLink>
           </div>
@@ -138,7 +138,7 @@ const Navbar = () => {
             </>
           ) : (
             <div>
-              <NavLink to="/login" className="mx-5 btn-gradent-swipe-r2l">
+              <NavLink to="/login" className="btn-gradent-swipe-r2l">
                 <span className="relative z-10 ">
                   <GrLogin className="mr-2 md:inline-block hidden " />
                   Log In
