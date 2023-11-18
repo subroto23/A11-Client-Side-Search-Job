@@ -1,0 +1,34 @@
+@keyframes scrollIcon {
+  0% {
+    left: 300px;
+    top: 0px;
+  }
+  100% {
+    left: 0px;
+    top: 300px;
+  }
+}
+.animated1 {
+  position: relative;
+  animation-name: scrollIcon;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate-reverse;
+}
+@keyframes scrollIcon2 {
+  0% {
+    left: 1200px;
+    top: 50px;
+  }
+  100% {
+    left: 1000px;
+    top: 200px;
+  }
+}
+.animated2 {
+  position: relative;
+  animation-name: scrollIcon2;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
