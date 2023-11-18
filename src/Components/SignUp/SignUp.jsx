@@ -1,8 +1,9 @@
 import { FaAngleDoubleRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import PageTransition from "../PageTransition/PageTransition";
 const SignUp = () => {
   return (
-    <div>
+    <PageTransition>
       <div className="bg-gradient-to-r from-green-600 to-green-500 flex flex-col justify-center items-center md:h-72 h-32">
         <h1 className="md:text-5xl text-white font-bold">
           Create Your Account
@@ -108,7 +109,7 @@ const SignUp = () => {
           </div>
         </div>
       </div>
-    </div>
+    </PageTransition>
   );
 };
 
