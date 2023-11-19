@@ -1,12 +1,44 @@
 import { FaAngleDoubleRight } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import PageTransition from "../PageTransition/PageTransition";
+import Swal from "sweetalert2";
+import { useState } from "react";
+import UseAuth from "../Hooks/UseAuth";
 
 const LogIn = () => {
-  const handleSubmit = (e) => {
+  const [errorLogin, setErrorLogIn] = useState("");
+  const { handleLogin } = UseAuth();
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(e.target.email.value);
-    console.log(e.target.password.value);
+    const form = new FormData(e.currentTarget);
+    const email = form.get("email");
+    const password = form.get("password");
+    //Password Validation Checks
+    if (password.length < 6) {
+      setErrorLogIn("Your password was at least 6 characters long");
+      return;
+    }
+    if (password.search(/[A-Z]/) < 0) {
+      setErrorLogIn("Your Password was contain an uppercase letter.");
+      return;
+    }
+    if (password.search(/[!@#$%^&*()_+{}[\]:;<>,.?~\\-]/) < 0) {
+      setErrorLogIn("Your Password was contain an Special Character");
+      return;
+    }
+    //handle Log In
+    await handleLogin({ email, password })
+      .then(() => {
+        e.target.reset();
+        Swal.fire("SuccessFully login!");
+        navigate(location?.state ? location.state : "/");
+      })
+      .catch(() => {
+        setErrorLogIn("Your email and Passwords not match");
+      });
   };
   return (
     <PageTransition>
@@ -56,6 +88,11 @@ const LogIn = () => {
                     </Link>
                   </button>
                 </div>
+                {errorLogin && (
+                  <div className="text-center">
+                    <p className="text-red-500 text-base my-2">{errorLogin}</p>
+                  </div>
+                )}
                 <button
                   type="submit"
                   className="py-3 btn-toggle-style mt-6  hover:font-bold focus:outline-none"

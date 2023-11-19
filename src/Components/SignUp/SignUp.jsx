@@ -107,9 +107,11 @@ const SignUp = () => {
                 placeholder="Photo URL"
                 required
               />
-              <div className="text-center">
-                <p className="text-red-500 text-base my-2">{message}</p>
-              </div>
+              {message && (
+                <div className="text-center">
+                  <p className="text-red-500 text-base my-2">{message}</p>
+                </div>
+              )}
               <div className="text-center my-8">
                 <button
                   type="submit"
