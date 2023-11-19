@@ -1,11 +1,15 @@
 @keyframes scrollIcon {
   0% {
-    left: 300px;
+    left: 100px;
     top: 0px;
+  }
+  25% {
+    left: 50px;
+    top: 100px;
   }
   100% {
     left: 0px;
-    top: 300px;
+    top: 220px;
   }
 }
 .animated1 {
@@ -14,6 +18,7 @@
   animation-duration: 5s;
   animation-iteration-count: infinite;
   animation-direction: alternate-reverse;
+  animation-timing-function: linear;
 }
 @keyframes scrollIcon2 {
   0% {
@@ -22,7 +27,7 @@
   }
   100% {
     left: 1000px;
-    top: 200px;
+    top: 150px;
   }
 }
 .animated2 {

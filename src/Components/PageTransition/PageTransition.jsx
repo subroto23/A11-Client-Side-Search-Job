@@ -8,7 +8,7 @@ const PageTransition = ({ children }) => {
       <AnimatePresence mode="wait">
         <motion.div
           key={location.pathname}
-          className="fixed top-0 left-0 w-full h-full bg-green-600 origin-bottom"
+          className="fixed top-0 left-0 w-full h-full bg-green-600 origin-bottom z-50"
           initial={{
             scaleY: 1,
           }}

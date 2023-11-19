@@ -71,7 +71,7 @@ const Navbar = () => {
   );
   return (
     <>
-      <div className=" text-gray-500 shadow-md">
+      <div className=" text-gray-500 shadow-md fixed top-0 z-50 w-full bg-white">
         <div className=" navbar max-w-7xl mx-auto flex justify-between items-center">
           {/* Nav Logo */}
           <div>
@@ -139,7 +139,7 @@ const Navbar = () => {
           ) : (
             <div>
               <NavLink to="/login" className="btn-gradent-swipe-r2l">
-                <span className="relative z-10 ">
+                <span className="relative z-10">
                   <GrLogin className="mr-2 md:inline-block hidden " />
                   Log In
                 </span>
