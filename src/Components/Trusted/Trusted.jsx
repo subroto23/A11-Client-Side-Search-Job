@@ -2,8 +2,8 @@ import { FaArrowRight } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 const Trusted = () => {
   return (
-    <section className="text-gray-600 body-font max-w-7xl">
-      <div className="container mx-auto  px-5 md:py-16 py-8 flex md:flex-row flex-col items-center md:gap-0 gap-12">
+    <section className="text-gray-600 body-font max-w-7xl mx-auto">
+      <div className="container mx-auto  px-5 md:py-16 py-8 flex md:flex-row flex-col items-center md:gap-0 gap-12 justify-between">
         <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6  md:mb-0">
           <div className="grid md:grid-cols-3 grid-cols-1">
             <div className="col-span-2">
@@ -33,7 +33,7 @@ const Trusted = () => {
             </div>
           </div>
         </div>
-        <div className="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center max-w-xl">
+        <div className="lg:flex-grow md:w-1/2 md:pl-16 flex flex-col md:items-start md:text-left items-center max-w-2xl">
           <h1 className="title-font sm:text-4xl text-xl mb-4 font-bold text-gray-600">
             Trusted & Popular Job Portal
           </h1>

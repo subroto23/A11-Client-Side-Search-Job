@@ -6,7 +6,9 @@ import SubscribeNewsletter from "../SubscribeNews/SubscribeNewsletter";
 const Root = () => {
   return (
     <div>
-      <Navbar />
+      <div className="mb-16">
+        <Navbar />
+      </div>
       <Outlet />
       <div className="md:-mb-20  -mb-16">
         <SubscribeNewsletter />
