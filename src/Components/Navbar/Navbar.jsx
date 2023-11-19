@@ -27,27 +27,31 @@ const Navbar = () => {
       >
         All Jobs
       </NavLink>
-      <NavLink
-        style={activeRouteStyle}
-        className="mx-5 hover:text-green-500 uppercase font-medium"
-        to=""
-      >
-        Applied Jobs
-      </NavLink>
-      <NavLink
-        style={activeRouteStyle}
-        className="mx-5 hover:text-green-500 uppercase font-medium"
-        to=""
-      >
-        Add A Job
-      </NavLink>
-      <NavLink
-        style={activeRouteStyle}
-        className="mx-5 hover:text-green-500 uppercase font-medium"
-        to=""
-      >
-        My Jobs
-      </NavLink>
+      {user && (
+        <>
+          <NavLink
+            style={activeRouteStyle}
+            className="mx-5 hover:text-green-500 uppercase font-medium"
+            to=""
+          >
+            Applied Jobs
+          </NavLink>
+          <NavLink
+            style={activeRouteStyle}
+            className="mx-5 hover:text-green-500 uppercase font-medium"
+            to=""
+          >
+            Add A Job
+          </NavLink>
+          <NavLink
+            style={activeRouteStyle}
+            className="mx-5 hover:text-green-500 uppercase font-medium"
+            to=""
+          >
+            My Jobs
+          </NavLink>
+        </>
+      )}
       <NavLink
         style={activeRouteStyle}
         className="mx-5 hover:text-green-500 uppercase font-medium"
@@ -117,7 +121,7 @@ const Navbar = () => {
               >
                 <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                   <div className="w-10 rounded-full ">
-                    <img src={user.photoURL} />
+                    <img src={user?.photoURL} alt="userPhoto" />
                   </div>
                 </label>
                 <ul

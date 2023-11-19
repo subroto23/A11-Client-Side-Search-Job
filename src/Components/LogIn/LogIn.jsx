@@ -7,7 +7,7 @@ import UseAuth from "../Hooks/UseAuth";
 
 const LogIn = () => {
   const [errorLogin, setErrorLogIn] = useState("");
-  const { handleLogin } = UseAuth();
+  const { handleLogin, handleGLogin } = UseAuth();
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -107,7 +107,7 @@ const LogIn = () => {
               or
               <span className="w-full ml-4 h-px bg-gray-300" />
             </div>
-            <div className="mb-12">
+            <div className="mb-12" onClick={() => handleGLogin()}>
               <button className="mb-2.5 btn-gradent-swipe-l2r py-3 px-7 rounded-md  font-semibold uppercase tracking-wider text-green-500 border w-full">
                 <span className="relative z-10 flex justify-center items-center">
                   <svg
