@@ -21,6 +21,14 @@ const AuthProvider = ({ children }) => {
     setLoading(true);
     return await createUserWithEmailAndPassword(auth, email, password);
   };
+  //Update User
+  const handleUpdateUser = async (name, photoUrl) => {
+    setLoading(true);
+    return await updateProfile(auth.currentUser, {
+      displayName: name,
+      photoURL: photoUrl,
+    });
+  };
   //Login User
   const handleLogin = async ({ email, password }) => {
     setLoading(true);
@@ -55,15 +63,6 @@ const AuthProvider = ({ children }) => {
       []
     );
   });
-
-  //Update User
-  const handleUpdateUser = async (name, photoUrl) => {
-    console.log(name, photoUrl);
-    return await updateProfile(auth.currentUser, {
-      displayName: name,
-      photoURL: photoUrl,
-    });
-  };
 
   //Pass Provider Value Of Object
   const authInfo = {

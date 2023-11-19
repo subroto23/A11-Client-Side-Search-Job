@@ -1,12 +1,10 @@
 import { Link, NavLink } from "react-router-dom";
-import { useContext } from "react";
-import { AuthContext } from "../AuthProvider/AuthProvider";
 import { FaUserPlus } from "react-icons/fa";
 import { GrLogin } from "react-icons/gr";
 import { IoMenuSharp } from "react-icons/io5";
+import UseAuth from "../Hooks/UseAuth";
 const Navbar = () => {
-  const { user, loading, handleLogOut } = useContext(AuthContext);
-  console.log(user);
+  const { user, loading, handleLogOut } = UseAuth();
   const activeRouteStyle = ({ isActive }) => {
     return {
       color: isActive ? "#2ecc71" : "",
@@ -113,7 +111,10 @@ const Navbar = () => {
           {/* Profile */}
           {loading ? null : user ? (
             <>
-              <div className="dropdown dropdown-end">
+              <div
+                className="dropdown dropdown-end tooltip tooltip-left"
+                data-tip={user.displayName}
+              >
                 <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                   <div className="w-10 rounded-full ">
                     <img src={user.photoURL} />
@@ -121,14 +122,14 @@ const Navbar = () => {
                 </label>
                 <ul
                   tabIndex={0}
-                  className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow rounded-lg w-52 bg-green-500"
+                  className=" menu-sm dropdown-content mt-3 z-[1]  shadow rounded-lg w-52  text-white btn-toggle-style"
                 >
-                  <li>
+                  <li className="hover:text-green-500 hover:bg-white hover:font-semibold py-2 border-b">
                     <button>
-                      <Link>{user.displayName}</Link>
+                      <Link>{user?.displayName}</Link>
                     </button>
                   </li>
-                  <li>
+                  <li className="hover:text-green-500 hover:bg-white hover:font-semibold py-2">
                     <button onClick={() => handleLogOut()}>
                       <Link>Logout</Link>
                     </button>

@@ -1,7 +1,49 @@
 import { FaAngleDoubleRight } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import PageTransition from "../PageTransition/PageTransition";
+import Swal from "sweetalert2";
+import UseAuth from "../Hooks/UseAuth";
+import { useState } from "react";
 const SignUp = () => {
+  const { handleRegistation, handleUpdateUser } = UseAuth();
+  const [message, setMessage] = useState(null);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const form = new FormData(e.currentTarget);
+    const name = form.get("fullname");
+    const email = form.get("email");
+    const password = form.get("password");
+    const photoUrl = form.get("photoUrl");
+    setMessage("");
+    //Password Validation Checks
+    if (password.length < 6) {
+      setMessage("Password must be at least 6 characters long");
+      return;
+    }
+    if (password.search(/[A-Z]/) < 0) {
+      setMessage("Password must contain an uppercase");
+      return;
+    }
+    if (password.search(/[!@#$%^&*()_+{}[\]:;<>,.?~\\-]/) < 0) {
+      setMessage("Password must contain an Special Character");
+      return;
+    }
+    const userRegistationData = { name, email, password, photoUrl };
+
+    await handleRegistation(userRegistationData)
+      .then(() => {
+        Swal.fire("SuccessFully Registation!");
+        e.target.reset();
+        setMessage("");
+        navigate(location?.state ? location.state : "/");
+      })
+      .catch(() => setMessage("Your Registration Request Failed"));
+
+    //
+    await handleUpdateUser(name, photoUrl);
+  };
   return (
     <PageTransition>
       <div className="bg-gradient-to-r from-green-600 to-green-500 flex flex-col justify-center items-center md:h-72 h-32">
@@ -34,12 +76,13 @@ const SignUp = () => {
                 </Link>
               </div>
             </div>
-            <form action="">
+            <form onSubmit={handleSubmit}>
               <input
                 type="text"
                 className="block border border-grey-light w-full p-3 rounded mb-4"
                 name="fullname"
                 placeholder="Full Name"
+                required
               />
 
               <input
@@ -47,6 +90,7 @@ const SignUp = () => {
                 className="block border border-grey-light w-full p-3 rounded mb-4"
                 name="email"
                 placeholder="Email"
+                required
               />
 
               <input
@@ -54,14 +98,18 @@ const SignUp = () => {
                 className="block border border-grey-light w-full p-3 rounded mb-4"
                 name="password"
                 placeholder="Password"
+                required
               />
               <input
                 type="text"
                 className="block border border-grey-light w-full p-3 rounded mb-4"
                 name="photoUrl"
                 placeholder="Photo URL"
+                required
               />
-
+              <div className="text-center">
+                <p className="text-red-500 text-base my-2">{message}</p>
+              </div>
               <div className="text-center my-8">
                 <button
                   type="submit"

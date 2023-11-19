@@ -1,6 +1,7 @@
 import { FaSearch } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import PageTransition from "../PageTransition/PageTransition";
+import { TypeAnimation } from "react-type-animation";
 const Banner = () => {
   const handleCatagorySubmit = (e) => {
     e.preventDefault();
@@ -8,13 +9,31 @@ const Banner = () => {
   };
   return (
     <PageTransition>
-      <div className="w-full max-h-[550px]">
+      <div className="w-full ">
         <div className="relative">
           {/* Overlay */}
-          <div className="absolute w-full h-full flex flex-col justify-center items-center text-gray-200 max-h-[550px] bg-black/70">
+          <div className="absolute w-full h-full flex flex-col justify-center items-center text-gray-200 md:h-[550px] lg:h-[800px] bg-black/60">
             <h1 className="px-4 text-2xl sm:text-5xl md:text-6xl lg:text-7xl font-bold">
-              Find <span className="text-[#4bcc5a]">Your </span>
-              Desire Job
+              Find Your <span> </span>
+              <TypeAnimation
+                sequence={[
+                  // Same substring at the start will only be typed out once, initially
+                  1000, // wait 1s before replacing "Mice" with "Hamsters"
+                  " Desire",
+                  2000,
+                  " Dream",
+                  2000,
+                ]}
+                wrapper="span"
+                speed={2}
+                style={{
+                  color: "#4bcc5a",
+                  textShadow: "1px 1px 2px white",
+                  display: "inline-block",
+                }}
+                repeat={Infinity}
+              />
+              <span> Job</span>
             </h1>
             <h1 className="px-4 md:text-xl text-xs font-bold md:mt-6 mt-2 text-center">
               <span>Jobs, Employment & Future Career Opportunities</span>
@@ -74,7 +93,7 @@ const Banner = () => {
             {/* Form Group End*/}
           </div>
           <img
-            className="w-full md:h-[550px] min-h-[400px] object-cover"
+            className="w-full md:h-[550px] lg:h-[800px] min-h-[400px] object-cover"
             src="https://yandex-images.clstorage.net/H5KS1O215/45a33clX/CcaW8rYXwObMzf62801eEpQ3HHhcI-iNdJSejK731zIBb8DV77QQhRw-ab6hsC72uVX9Gqj8rfpD8jdTBHX4xmxSY_by1nECPG3utsOdz6IER6z4Wae5ThKWHNtYEKRwxnhycUrhxeBd2qmbYSONRzuSOumtfDgvp0XCNBOyPtGY1-TDttWA4R5t_vNQnwyQtLeY-A1DvNzSFS9JunFWQGRIcfHYwgdA3s0JS1KiHJN7kNqovQ-prdSkMXZB8E3gefR34pWmQRF8TO8CoH7sEAZ1-ljsQz5dI_UtycrhByAUO8GSOtCG0O1fKynScvxAeFCaqa8NmoxUBmKkATGcIQhGVXPlpILi7I1-wZNdvbHk5DkJzXIO_THU7_sbY2RhBZuQ0YiTlSOsHRo48qAM0SjCeNq8zXruBkVxJBGh_DCo1dSxd6fjg24-r2DSLa6wpAQqaZ8QXU8iRt-qecCmwTa6wnNL01Ty3A7ICpCAX_BrkPibv_yITbS2AfRjAh1jGNbFsLZ004FPPvyxEC5PosYECKmdQ-0NsldcCzkQRjMme_AiuuGXcJ4cOXrwgW-CGcGo2969---35VA006Hd8ahU98NWp_NzDvw9U2C-D6Ak95jaLCCe7JD0bVj4cWVghTrxAjiwZxM-7Bj7AsAeY8jj-cscnZlvJHdAFgMBjyCKR-SjtDYAos99nZKRzZ-B9iQIyE3S7D-DdGx5-TKWAJeoggJJcVeBjjzoi6CSD-O6w7oZ3K15fdeFQ8awIG8TefdWE9ZEknLtbU0AkH9cshQ2uQkfMYxO8veciYqTNgE0WiOCapGnYhwvW8uC4CxiWAP6y4ys2k9GdQB08mHt4rqFNKK3pYPwnR4884Adj9J1Nfo47OGPP6N3falpcuYiZmuwoqgihwLtLDkKweBvwioymUrcraqsRKeDxzDRzKEJRueRtoTzQ76N3VLinn1Q9rTq-B0CHs3QZP2aWJI1o"
             alt="/"
           />

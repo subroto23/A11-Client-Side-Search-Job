@@ -1,9 +1,15 @@
 import { FaAngleDoubleRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import PageTransition from "../PageTransition/PageTransition";
 
 const LogIn = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(e.target.email.value);
+    console.log(e.target.password.value);
+  };
   return (
-    <div>
+    <PageTransition>
       <div className="bg-gradient-to-r from-green-600 to-green-500 flex flex-col justify-center items-center md:h-72 h-32">
         <h1 className="md:text-5xl text-white font-bold">Log In</h1>
         <p className="text-white md:mt-6 md:text-xl md:font-medium text-xs mt-2 flex justify-center items-center">
@@ -14,14 +20,14 @@ const LogIn = () => {
           Login
         </p>
       </div>
-      {/* Form SignUp */}
-      <div className="flex">
+      {/* Form LogIn */}
+      <div className="flex my-12">
         <div className="container max-w-2xl  mx-auto flex-1 flex flex-col items-center justify-center px-2">
-          <div className="px-6 rounded  text-black w-full border border-t-0 my-6 ">
+          <div className="px-6 rounded  text-black w-full border-b">
             <h1 className="md:text-5xl text-2xl font-bold text-gray-500 text-center md:mt-4 md:mb-12 my-6">
               Login Your Account
             </h1>
-            <form action="">
+            <form onSubmit={handleSubmit}>
               <input
                 type="text"
                 className="block border border-grey-light w-full p-3 rounded mb-4"
@@ -36,8 +42,8 @@ const LogIn = () => {
                 placeholder="Password"
               />
               <div className="text-center flex flex-col">
-                <div className="flex flex-col space-y-3 mb-3">
-                  <button className="text-green-500 hover:font-bold text-lg mx-2">
+                <div className="flex flex-col space-y-6 mb-3">
+                  <button className="text-green-500 hover:font-bold text-lg mx-2 mt-6">
                     Forget Password ?
                   </button>
                   <button className="text-grey-dark">
@@ -52,7 +58,7 @@ const LogIn = () => {
                 </div>
                 <button
                   type="submit"
-                  className="py-3 btn-toggle-style  hover:font-bold focus:outline-none"
+                  className="py-3 btn-toggle-style mt-6  hover:font-bold focus:outline-none"
                 >
                   <span className="relative z-10 px-12 rounded-md">Log In</span>
                 </button>
@@ -64,7 +70,7 @@ const LogIn = () => {
               or
               <span className="w-full ml-4 h-px bg-gray-300" />
             </div>
-            <div>
+            <div className="mb-12">
               <button className="mb-2.5 btn-gradent-swipe-l2r py-3 px-7 rounded-md  font-semibold uppercase tracking-wider text-green-500 border w-full">
                 <span className="relative z-10 flex justify-center items-center">
                   <svg
@@ -83,7 +89,7 @@ const LogIn = () => {
           </div>
         </div>
       </div>
-    </div>
+    </PageTransition>
   );
 };
 
