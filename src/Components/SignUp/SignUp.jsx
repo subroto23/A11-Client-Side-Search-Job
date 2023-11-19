@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 import UseAuth from "../Hooks/UseAuth";
 import { useState } from "react";
 const SignUp = () => {
-  const { handleRegistation, handleUpdateUser } = UseAuth();
+  const { handleRegistation, handleUpdateUser, handleGLogin } = UseAuth();
   const [message, setMessage] = useState(null);
   const location = useLocation();
   const navigate = useNavigate();
@@ -43,6 +43,14 @@ const SignUp = () => {
 
     //
     await handleUpdateUser(name, photoUrl);
+  };
+
+  const handleGoogleLogIn = async () => {
+    await handleGLogin()
+      .then(() => {
+        navigate(location?.state ? location.state : "/");
+      })
+      .catch((err) => console.log(err));
   };
   return (
     <PageTransition>
@@ -128,7 +136,7 @@ const SignUp = () => {
               <span className="w-full ml-4 h-px bg-gray-300" />
             </div>
             <div className="text-center text-sm text-grey-dark my-4">
-              <div>
+              <div onClick={handleGoogleLogIn}>
                 <button className="mb-2.5 btn-gradent-swipe-l2r py-3 px-7 rounded-md  font-semibold uppercase tracking-wider text-green-500 border w-full">
                   <span className="relative z-10 flex justify-center items-center">
                     <svg

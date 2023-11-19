@@ -5,6 +5,7 @@ import AllJobs from "./Components/AllJobs/AllJobs";
 import Home from "./Pages/Home";
 import SignUp from "./Components/SignUp/SignUp";
 import LogIn from "./Components/LogIn/LogIn";
+import Blogs from "./Components/Blogs/Blogs";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: "/all-jobs",
         element: <AllJobs />,
+      },
+      {
+        path: "/blogs",
+        element: <Blogs />,
       },
     ],
   },
