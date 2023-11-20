@@ -59,11 +59,11 @@ const SignUp = () => {
           Create Your Account
         </h1>
         <p className="text-white md:mt-6 md:text-xl md:font-medium text-xs mt-2 flex justify-center items-center">
-          Home{" "}
+          <Link to="/">Home</Link>
           <span className="mx-1">
             <FaAngleDoubleRight />
           </span>{" "}
-          Create Account
+          <Link to="/sign-up">Create Account</Link>
         </p>
       </div>
       {/* Form SignUp */}

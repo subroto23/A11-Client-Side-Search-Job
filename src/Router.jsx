@@ -6,6 +6,7 @@ import Home from "./Pages/Home";
 import SignUp from "./Components/SignUp/SignUp";
 import LogIn from "./Components/LogIn/LogIn";
 import Blogs from "./Components/Blogs/Blogs";
+import BlogsDetails from "./Components/BlogsDetails/BlogsDetails";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -31,6 +32,12 @@ const router = createBrowserRouter([
       {
         path: "/blogs",
         element: <Blogs />,
+      },
+      {
+        path: "/blogs-details/:id",
+        element: <BlogsDetails />,
+        loader: ({ params }) =>
+          fetch(`https://api.npoint.io/0749a376c646416dd7f8/${params.id}`),
       },
     ],
   },

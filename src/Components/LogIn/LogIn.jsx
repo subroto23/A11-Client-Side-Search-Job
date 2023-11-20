@@ -45,11 +45,11 @@ const LogIn = () => {
       <div className="bg-gradient-to-r from-green-600 to-green-500 flex flex-col justify-center items-center md:h-72 h-32">
         <h1 className="md:text-5xl text-white font-bold">Log In</h1>
         <p className="text-white md:mt-6 md:text-xl md:font-medium text-xs mt-2 flex justify-center items-center">
-          Home
+          <Link to="/">Home</Link>
           <span className="mx-1">
             <FaAngleDoubleRight />
           </span>
-          Login
+          <Link to="/login">LogIn</Link>
         </p>
       </div>
       {/* Form LogIn */}

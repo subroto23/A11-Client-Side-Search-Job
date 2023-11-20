@@ -1,0 +1,56 @@
+[
+  {
+    "id": 10001,
+    "title": "What is an access token?",
+    "descriptions": "An access token is a credential that represents the authorization granted to a client (an application or user) to access a specific set of resources.It is a string of characters that is used by the client to access protected resources on behalf of the resource owner (user) after the user grants consent.Access tokens are short-lived and typically have an expiration period. Once an access token expires, the client must obtain a new one by going through the authorization process again.The actual format and content of an access token can vary depending on the implementation, but it usually contains information about the token type, expiration time, and the permissions granted to the client.",
+    "thubnail": "https://avatars.mds.yandex.net/i?id=e32733a6307e4c3a65d28cd13e6c82008eb3df38-9182224-images-thumbs&n=13",
+    "creatorPhotoUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1Tx_VHgcwHHQrmvh8glff0zMlB6BjL6wgcZxE4WCn&s",
+    "creatorName": "Subroto",
+    "createdDate": "26 Jun 2023"
+  },
+  {
+    "id": 10002,
+    "title": "What is an refresh token ?",
+    "descriptions": "A refresh token is a credential used to obtain a new access token when the original access token expires.Unlike access tokens, refresh tokens are typically long-lived and are used to request new access tokens without requiring the user to reauthenticate.Refresh tokens are securely stored on the client side and are kept confidential. They are only exchanged for a new access token when needed.The use of refresh tokens improves security by reducing the frequency with which the client must send the user's credentials (such as username and password) to the authorization server.",
+    "thubnail": "https://avatars.mds.yandex.net/i?id=1c6248f8d131d482d4a66c155e0e575fcd78dcea-8404489-images-thumbs&n=13",
+    "creatorPhotoUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1Tx_VHgcwHHQrmvh8glff0zMlB6BjL6wgcZxE4WCn&s",
+    "creatorName": "Anawer",
+    "createdDate": "11 may 2023"
+  },
+  {
+    "id": 10003,
+    "title": "How access token and refresh token do work and where should we store them on the client-side ?",
+    "descriptions": "A token is an unique approval given to you (more like a digital signature) for accessing any resource. The application issues it to you once you have authenticated yourself with valid credentials. These tokens are generally short-lived, i.e., valid only for a short amount of time (say 5-15 minutes). This is plenty for you to perform a particular task requiring validation but makes it harder for individuals with malicious intent to get their hands on confidential resources. Now, until the token expires, the user would not have to enter the credentials again.A refresh token just helps you re-validate a user without them having to re-enter their login credentials multiple times. The access token is re-issued, provided the refresh token is a valid one requesting permission to access confidential resources. This method provides an enhanced user experience all while keeping a robust security interface. Access tokens are typically short-lived and stored in memory on the client side. This can be in a variable or some in-memory storage specific to the platform (e.g., local storage in a web browser, memory in a mobile app).Secure Storage: Store refresh tokens in a secure location. For web applications, this might be in an HTTP-only cookie or in a secure session storage. For mobile apps, consider using secure storage mechanisms provided by the platform.Token Storage Best Practices: Follow security best practices for the platform you are working on. For instance, on the web, be cautious about the use of client-side storage like local storage, which may be susceptible to cross-site scripting (XSS) attacks.Token Rotation: Periodically rotate refresh tokens to mitigate the impact of potential leaks.OAuth Libraries: Leverage established OAuth libraries and frameworks that provide secure token storage mechanisms.",
+    "thubnail": "https://mujermexico.com/wp-content/uploads/2022/10/mejores-frases-de-libros-amor-vida-esperanza.jpg",
+    "creatorPhotoUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1Tx_VHgcwHHQrmvh8glff0zMlB6BjL6wgcZxE4WCn&s",
+    "creatorName": "Johan Smith",
+    "createdDate": "23 july 2023"
+  },
+  {
+    "id": 10004,
+    "title": "What is express js ?",
+    "descriptions": "Express.js is the most popular web framework for Node.js. It is designed for building web applications and APIs and has been called the de facto standard server framework for Node.js.In traditional web applications, a web server will wait for HTTP requests to be sent from the client. Upon receiving a HTTP request, the server will choose the corresponding route handler and delegate further action to it for that request. Normally, writing a route handler from scratch can be a bit burdensome in Node. Fortunately, Express provides methods to specify what function is called for a particular HTTP verb (GET, POST, PUT, etc.",
+    "thubnail": "https://miro.medium.com/v2/resize:fit:1200/1*9E3_tfPwqTgjNUa2_NEIGg.png",
+    "creatorPhotoUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1Tx_VHgcwHHQrmvh8glff0zMlB6BjL6wgcZxE4WCn&s",
+    "creatorName": "Selim Shikh",
+    "createdDate": "23 March 2023"
+  },
+  {
+    "id": 10005,
+    "title": "What is Nest js ?",
+    "descriptions": "Nest.js is one of the fastest-growing Node.js frameworks for building efficient, scalable, and enterprise-grade backend applications using Node.js. It is known for producing highly testable, maintainable, and scalable applications using modern JavaScript and TypeScript.With over 46.6k stars and 5.4k forks on GitHub, and a weekly download count of up to 700,000, the framework is a popular go-to for crafting out your backend project with Node.js.Nest.js is a perfect solution for your next project if you need to build a scalable, maintainable, enterprise-level application.Nest.js is a server-side Node.js framework that’s great for building highly testable and maintainable backend applications. You can create countless types of applications with Node.js; you’re only limited by your applications’ features.Since the framework leverages TypeScript, Nest.js is especially popular with teams seeking to leverage TypeScript’s type-checking power. What’s more, it’s simple to learn and master, with a powerful CLI to boost productivity and ease of development. This powerful CLI makes it a breeze to jump-start any server-side project and see it to completion.",
+    "thubnail": "https://avatars.mds.yandex.net/i?id=d67e2a97e4a9e0e0e06d205c5d1ecbdbc3acb453-9690550-images-thumbs&n=13",
+    "creatorPhotoUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1Tx_VHgcwHHQrmvh8glff0zMlB6BjL6wgcZxE4WCn&s",
+    "creatorName": "Mahamudul Hasan",
+    "createdDate": "06 August 2023"
+  },
+  {
+    "id": 10006,
+    "title": "What is React ?",
+    "descriptions": "React is a framework that employs Webpack to automatically compile React, JSX, and ES6 code while handling CSS file prefixes. React is a JavaScript-based UI development library. Although React is a library rather than a language, it is widely used in web development. The library first appeared in May 2013 and is now one of the most commonly used frontend libraries for web development.When compared to other technologies on the market, React is a new technology. Jordan Walke, a software engineer at Facebook, founded the library in 2011, giving it life. The likes of XHP, a straightforward HTML component framework for PHP, have an influence on React. React's newsfeed was its debut application in 2011. Later, Instagram picks it up and incorporates it into their platform.",
+    "thubnail": "https://www.21c-learning.com/wp-content/uploads/2016/04/coding-924920_1920.jpg",
+    "creatorPhotoUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1Tx_VHgcwHHQrmvh8glff0zMlB6BjL6wgcZxE4WCn&s",
+    "creatorName": "Johan Doe",
+    "createdDate": "16 May 2023"
+  }
+]
