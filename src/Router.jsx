@@ -7,6 +7,7 @@ import SignUp from "./Components/SignUp/SignUp";
 import LogIn from "./Components/LogIn/LogIn";
 import Blogs from "./Components/Blogs/Blogs";
 import BlogsDetails from "./Components/BlogsDetails/BlogsDetails";
+import AddJobs from "./Components/AddJobs/AddJobs";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: "/all-jobs",
         element: <AllJobs />,
+      },
+      {
+        path: "/add-jobs",
+        element: <AddJobs />,
       },
       {
         path: "/blogs",

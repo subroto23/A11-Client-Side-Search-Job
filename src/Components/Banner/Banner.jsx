@@ -5,7 +5,6 @@ import { TypeAnimation } from "react-type-animation";
 const Banner = () => {
   const handleCatagorySubmit = (e) => {
     e.preventDefault();
-    console.log(e.target.searchValue.value);
   };
   return (
     <PageTransition>
