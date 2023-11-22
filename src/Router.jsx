@@ -10,6 +10,7 @@ import BlogsDetails from "./Components/BlogsDetails/BlogsDetails";
 import AddJobs from "./Components/AddJobs/AddJobs";
 import ViewDetailsJob from "./Components/ViewDetails/ViewDetailsJob";
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
+import CvSubmitedForm from "./Components/CvSubmit/CvSubmitedForm";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -55,6 +56,15 @@ const router = createBrowserRouter([
         element: <BlogsDetails />,
         loader: ({ params }) =>
           fetch(`https://api.npoint.io/0749a376c646416dd7f8/${params.id}`),
+      },
+      {
+        path: "/submit-cv",
+        element: (
+          <PrivateRoute>
+            {" "}
+            <CvSubmitedForm />
+          </PrivateRoute>
+        ),
       },
     ],
   },

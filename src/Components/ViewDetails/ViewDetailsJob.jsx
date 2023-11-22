@@ -1,6 +1,8 @@
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import PageTransition from "../PageTransition/PageTransition";
 import { FaAngleDoubleRight } from "react-icons/fa";
+import Swal from "sweetalert2";
+import UseAuth from "../Hooks/UseAuth";
 const ViewDetailsJob = () => {
   const loadData = useLoaderData();
   const {
@@ -14,7 +16,28 @@ const ViewDetailsJob = () => {
     shortDetails,
     banner,
   } = loadData;
-  console.log(banner);
+  const { user, handleLogOut } = UseAuth();
+  const navigate = useNavigate();
+  const email = user?.email;
+  //
+  const handleApplyButton = (e) => {
+    e.preventDefault();
+    Swal.fire({
+      title: "Do you want to use this email?",
+      text: `${email}`,
+      icon: "success",
+      confirmButtonText: "Yes",
+      showCancelButton: true,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        navigate("/submit-cv", { state: { loadData } });
+      } else {
+        Swal.fire("Please Login Another Account and try again");
+        handleLogOut();
+        navigate("/login");
+      }
+    });
+  };
   return (
     <div className="mt-16">
       <PageTransition>
@@ -35,9 +58,9 @@ const ViewDetailsJob = () => {
         {/* Details Section Start */}
         <div
           style={{ backgroundImage: `url(${banner})` }}
-          className="bg-cover object-center w-full py-12"
+          className="bg-cover object-center w-full md:py-12"
         >
-          <div className="bg-white max-w-4xl mx-3  md:mx-auto my-12 border-l-[40px] border-l-green-800 md:px-12 px-6 pb-12 border">
+          <div className="bg-white max-w-4xl mx-3  md:mx-auto md:my-12  border-l-[40px] border-l-green-800 md:px-12 px-6 pb-12 border">
             <div className="flex items-center md:gap-20 gap-6 pt-4">
               <div>
                 <img className="w-32 h-32 " src={imageUrl} alt="" />
@@ -76,7 +99,7 @@ const ViewDetailsJob = () => {
             </div>
             <div className="text-center mt-12  mx-auto">
               <button
-                type="submit"
+                onClick={handleApplyButton}
                 className="py-3 btn-gradent-swipe-r2l hover:font-bold focus:outline-none"
               >
                 <span className="relative z-10">Apply Job</span>
