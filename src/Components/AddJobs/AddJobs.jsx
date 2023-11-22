@@ -29,6 +29,7 @@ const AddJobs = () => {
     const salaryStart = form.get("salaryStart");
     const salaryEnd = form.get("salaryEnd");
     const imageUrl = form.get("imageUrl");
+    const banner = form.get("banner");
     const applyCount = 0;
     const postJobData = {
       imageUrl,
@@ -41,9 +42,10 @@ const AddJobs = () => {
       applyCount,
       endDate,
       cretedDate,
+      banner,
     };
 
-    AxiosRequest.post("/add-jobs/create", postJobData)
+    AxiosRequest.post("/jobs/create", postJobData)
       .then(() => {
         setLoader(false);
         Swal.fire("Post Successfully added");
@@ -152,13 +154,28 @@ const AddJobs = () => {
                   className="text-gray-700 dark:text-gray-200"
                   htmlFor="BannerUrl"
                 >
-                  JobBannerUrl
+                  Company Logo Url
                 </label>
                 <input
                   type="text"
                   name="imageUrl"
                   className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-400 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
-                  placeholder="Job Banner imageUrl"
+                  placeholder="Logo"
+                  required
+                />
+              </div>
+              <div>
+                <label
+                  className="text-gray-700 dark:text-gray-200"
+                  htmlFor="BannerUrl"
+                >
+                  Job Banner Url
+                </label>
+                <input
+                  type="text"
+                  name="banner"
+                  className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-400 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                  placeholder="Job Banner Url"
                   required
                 />
               </div>
