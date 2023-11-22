@@ -36,6 +36,7 @@ const CvSubmitedForm = () => {
           AxiosRequest.patch(`/jobs/job?id=${_id}`, { applyCount: count })
             .then(() => {
               setLoader(false);
+              e.target.reset();
               Swal.fire("Apply Successfully");
             })
             .catch((err) => console.log(err));

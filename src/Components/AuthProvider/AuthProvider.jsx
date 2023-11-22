@@ -10,6 +10,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import auth from "../FirebaseConfig/FirebaseConfig";
+import axios from "axios";
 export const AuthContext = createContext(null);
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -45,16 +46,33 @@ const AuthProvider = ({ children }) => {
     setLoading(true);
     return await signInWithPopup(auth, provider);
   };
-
   //Auth State Changes
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(
       auth,
       (currentUser) => {
+        const email = currentUser?.email || user?.email;
+        const name = currentUser?.name || user?.name;
+        const loggedInUser = { name, email };
         if (currentUser) {
           setUser(currentUser);
           setLoading(false);
+          //
+          if (currentUser) {
+            axios
+              .post("http://localhost:3001/secure/api", loggedInUser, {
+                withCredentials: true,
+              })
+              .then((res) => console.log(res.data))
+              .catch((err) => console.log(err));
+          }
         } else {
+          axios
+            .post("http://localhost:3001/secure/api/logout", loggedInUser, {
+              withCredentials: true,
+            })
+            .then((res) => console.log(res.data))
+            .catch((err) => console.log(err));
           setUser(null);
           setLoading(false);
         }

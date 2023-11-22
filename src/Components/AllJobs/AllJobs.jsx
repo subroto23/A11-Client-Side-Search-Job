@@ -14,8 +14,8 @@ const AllJobs = () => {
     axiosSecureUrl
       .get("/jobs")
       .then((res) => {
-        setJobsData(res.data);
-        setJobDatas(res.data);
+        setJobsData(res?.data);
+        setJobDatas(res?.data);
         setNotDataFound("");
       })
       .catch((err) => console.log(err));
