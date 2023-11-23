@@ -3,28 +3,35 @@ import PageTransition from "../PageTransition/PageTransition";
 import { FaAngleDoubleRight } from "react-icons/fa";
 import Swal from "sweetalert2";
 import UseAuth from "../Hooks/UseAuth";
+import { useEffect, useState } from "react";
 const ViewDetailsJob = () => {
+  const [disableBtn, setDisableBtn] = useState(false);
   const loadData = useLoaderData();
   const {
     applyCount,
-    // cretedDate,
-    // endDate,
     imageUrl,
     jobTitle,
     salaryEnd,
     salaryStart,
     shortDetails,
     banner,
+    email,
   } = loadData;
   const { user, handleLogOut } = UseAuth();
   const navigate = useNavigate();
-  const email = user?.email;
-  //
+  const userEmail = user?.email;
+
+  useEffect(() => {
+    if (userEmail === email) {
+      setDisableBtn(true);
+    }
+  }, [email, userEmail]);
+
   const handleApplyButton = (e) => {
     e.preventDefault();
     Swal.fire({
       title: "Do you want to use this email?",
-      text: `${email}`,
+      text: `${userEmail}`,
       icon: "success",
       confirmButtonText: "Yes",
       showCancelButton: true,
@@ -100,9 +107,19 @@ const ViewDetailsJob = () => {
             <div className="text-center mt-12  mx-auto">
               <button
                 onClick={handleApplyButton}
-                className="py-3 btn-gradent-swipe-r2l hover:font-bold focus:outline-none"
+                disabled={disableBtn}
+                className="py-3 btn-gradent-swipe-r2l  hover:font-bold focus:outline-none"
+                style={
+                  disableBtn
+                    ? {
+                        opacity: 0.7,
+                      }
+                    : null
+                }
               >
-                <span className="relative z-10">Apply Job</span>
+                <span className="relative z-10">
+                  {disableBtn ? "Disable Apply Button" : "Apply Job"}
+                </span>
               </button>
             </div>
           </div>

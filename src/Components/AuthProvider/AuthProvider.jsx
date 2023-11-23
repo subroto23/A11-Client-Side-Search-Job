@@ -52,8 +52,7 @@ const AuthProvider = ({ children }) => {
       auth,
       (currentUser) => {
         const email = currentUser?.email || user?.email;
-        const name = currentUser?.name || user?.name;
-        const loggedInUser = { name, email };
+        const loggedInUser = { email };
         if (currentUser) {
           setUser(currentUser);
           setLoading(false);
@@ -71,7 +70,6 @@ const AuthProvider = ({ children }) => {
             .post("http://localhost:3001/secure/api/logout", loggedInUser, {
               withCredentials: true,
             })
-            .then((res) => console.log(res.data))
             .catch((err) => console.log(err));
           setUser(null);
           setLoading(false);
@@ -81,7 +79,6 @@ const AuthProvider = ({ children }) => {
       []
     );
   });
-
   //Pass Provider Value Of Object
   const authInfo = {
     user,

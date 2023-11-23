@@ -11,6 +11,7 @@ import AddJobs from "./Components/AddJobs/AddJobs";
 import ViewDetailsJob from "./Components/ViewDetails/ViewDetailsJob";
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
 import CvSubmitedForm from "./Components/CvSubmit/CvSubmitedForm";
+import MyPostedJobs from "./Components/MyJobs/MyPostedJobs";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: "/all-jobs",
         element: <AllJobs />,
+      },
+      {
+        path: "/my-jobs/post",
+        element: <MyPostedJobs />,
       },
       {
         path: "/job/:id",

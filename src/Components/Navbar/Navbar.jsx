@@ -46,7 +46,7 @@ const Navbar = () => {
           <NavLink
             style={activeRouteStyle}
             className="mx-5 hover:text-green-500 uppercase font-medium"
-            to=""
+            to="/my-jobs/post"
           >
             My Jobs
           </NavLink>

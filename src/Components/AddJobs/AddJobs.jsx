@@ -19,6 +19,7 @@ const AddJobs = () => {
   const { user } = UseAuth();
   const AxiosRequest = UseAxiosSecure();
   const jobCreator = user?.displayName;
+  const email = user?.email;
   const cretedDate = moment().format("DD/MM/yyyy");
   //Form Handler
   const handleSubmit = (e) => {
@@ -43,6 +44,7 @@ const AddJobs = () => {
       endDate,
       cretedDate,
       banner,
+      email,
     };
 
     AxiosRequest.post("/jobs/create", postJobData)
