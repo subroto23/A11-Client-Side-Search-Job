@@ -12,6 +12,7 @@ import ViewDetailsJob from "./Components/ViewDetails/ViewDetailsJob";
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
 import CvSubmitedForm from "./Components/CvSubmit/CvSubmitedForm";
 import MyPostedJobs from "./Components/MyJobs/MyPostedJobs";
+import UpdateJob from "./Components/MyJobUpdate/MyJobUpdate";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -37,6 +38,18 @@ const router = createBrowserRouter([
       {
         path: "/my-jobs/post",
         element: <MyPostedJobs />,
+      },
+      {
+        path: "/my-jobs/post/update/:id",
+        element: (
+          <PrivateRoute>
+            <UpdateJob />
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:3001/api/my-jobs/job/${params.id}`, {
+            credentials: "include",
+          }),
       },
       {
         path: "/job/:id",

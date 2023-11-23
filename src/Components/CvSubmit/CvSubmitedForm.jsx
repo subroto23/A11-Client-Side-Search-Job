@@ -1,18 +1,15 @@
 import { Link, useLocation } from "react-router-dom";
 import PageTransition from "../PageTransition/PageTransition";
 import { FaAngleDoubleRight } from "react-icons/fa";
-import moment from "moment";
 import { useState } from "react";
 import Swal from "sweetalert2";
 import UseAxiosSecure from "../Hooks/UseAxiosSecure";
 import UseAuth from "../Hooks/UseAuth";
 const CvSubmitedForm = () => {
-  const [disableBtn, setDisabledBtn] = useState(false);
   const [loader, setLoader] = useState(false);
   const location = useLocation();
   const appliedJob = location.state?.loadData;
-  const { applyCount, endDate, _id } = appliedJob;
-  const presentDate = moment().format();
+  const { applyCount, _id } = appliedJob;
   const AxiosRequest = UseAxiosSecure();
   const { user } = UseAuth();
 
@@ -20,29 +17,25 @@ const CvSubmitedForm = () => {
   const handleSubmitResume = (e) => {
     e.preventDefault();
     setLoader(true);
-    if (endDate < presentDate) {
-      Swal.fire("Apply Date End");
-      setDisabledBtn(true);
-    } else {
-      const resumeUrl = e.target.resumeUrl.value;
-      const email = user.email;
-      const name = user.displayName;
-      const applyJobId = _id;
-      const resumeData = { email, name, resumeUrl, applyJobId };
-      //Apply Count Value Upadate and Increasing
-      AxiosRequest.post("/resume/create", resumeData)
-        .then(() => {
-          const count = Number(applyCount) + 1;
-          AxiosRequest.patch(`/jobs/job?id=${_id}`, { applyCount: count })
-            .then(() => {
-              setLoader(false);
-              e.target.reset();
-              Swal.fire("Apply Successfully");
-            })
-            .catch((err) => console.log(err));
-        })
-        .catch((err) => console.log(err));
-    }
+
+    const resumeUrl = e.target.resumeUrl.value;
+    const email = user.email;
+    const name = user.displayName;
+    const applyJobId = _id;
+    const resumeData = { email, name, resumeUrl, applyJobId };
+    //Apply Count Value Upadate and Increasing
+    AxiosRequest.post("/resume/create", resumeData)
+      .then(() => {
+        const count = Number(applyCount) + 1;
+        AxiosRequest.patch(`/jobs/job?id=${_id}`, { applyCount: count })
+          .then(() => {
+            setLoader(false);
+            e.target.reset();
+            Swal.fire("Apply Successfully");
+          })
+          .catch((err) => console.log(err));
+      })
+      .catch((err) => console.log(err));
   };
   return (
     <div className="mt-16">
@@ -93,7 +86,6 @@ const CvSubmitedForm = () => {
               <button
                 type="submit"
                 className="px-8 my-5 py-4 leading-5 btn-toggle-style focus:outline-none focus:bg-gray-600 text-center flex"
-                disabled={disableBtn}
               >
                 {loader && (
                   <span className="loading loading-spinner loading-md mr-2"></span>

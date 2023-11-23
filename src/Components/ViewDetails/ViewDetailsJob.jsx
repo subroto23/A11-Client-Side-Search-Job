@@ -4,6 +4,7 @@ import { FaAngleDoubleRight } from "react-icons/fa";
 import Swal from "sweetalert2";
 import UseAuth from "../Hooks/UseAuth";
 import { useEffect, useState } from "react";
+import moment from "moment";
 const ViewDetailsJob = () => {
   const [disableBtn, setDisableBtn] = useState(false);
   const loadData = useLoaderData();
@@ -16,16 +17,22 @@ const ViewDetailsJob = () => {
     shortDetails,
     banner,
     email,
+    endDate,
   } = loadData;
   const { user, handleLogOut } = UseAuth();
   const navigate = useNavigate();
   const userEmail = user?.email;
+  const presentDate = moment().format();
 
   useEffect(() => {
     if (userEmail === email) {
       setDisableBtn(true);
     }
-  }, [email, userEmail]);
+    if (endDate < presentDate) {
+      Swal.fire("Apply Date End");
+      setDisableBtn(true);
+    }
+  }, [email, userEmail, endDate, presentDate]);
 
   const handleApplyButton = (e) => {
     e.preventDefault();

@@ -4,6 +4,7 @@ import { FaAngleDoubleRight } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import UseAxiosSecure from "../Hooks/UseAxiosSecure";
 import UseAuth from "../Hooks/UseAuth";
+import Swal from "sweetalert2";
 
 const MyPostedJobs = () => {
   const [apiData, setApiData] = useState([]);
@@ -15,6 +16,34 @@ const MyPostedJobs = () => {
       .then((res) => setApiData(res?.data))
       .catch((err) => console.log(err));
   }, [axiosSecure, user]);
+
+  //Handle Delete Button
+  const handleButtonDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      axiosSecure
+        .delete(`/api/my-jobs/delete/${id}`)
+        .then(() => {
+          if (result.isConfirmed) {
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your file has been deleted.",
+              icon: "success",
+            });
+          }
+          const filter = apiData.filter((data) => data._id !== id);
+          setApiData(filter);
+        })
+        .catch((err) => console.log(err));
+    });
+  };
   return (
     <div className="mt-16">
       <PageTransition>
@@ -33,8 +62,57 @@ const MyPostedJobs = () => {
           </div>
         </div>
         {/* My Post Data Section */}
-        <div className="text-2xl my-12 text-center">
-          Data = {apiData.length}
+        <div className="mx-auto max-w-7xl md:my-12 mt-6">
+          <div className="overflow-x-auto">
+            <table className="table text-center border-collapse border-slate-400">
+              {/* head */}
+              <thead className="py-2 text-gray-600 text-lg">
+                <tr className="">
+                  <th>Logo</th>
+                  <th>Job Title</th>
+                  <th>Job Catagory</th>
+                  <th>Salary Range</th>
+                  <th>Deadline</th>
+                  <th>Update</th>
+                  <th>Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+                {apiData.map((data) => {
+                  return (
+                    <tr key={data._id}>
+                      <td>
+                        <img
+                          src={data?.imageUrl}
+                          className="w-12 h-12"
+                          alt=""
+                        />
+                      </td>
+                      <td className="font-medium">{data?.jobTitle}</td>
+                      <td>{data?.selectedCatagory}</td>
+                      <td>{`${data?.salaryStart} - ${data?.salaryEnd}`}</td>
+                      <td>{data?.endDate.slice(0, 10)}</td>
+                      <td>
+                        <button className="text-md font-semibold text-green-600">
+                          <Link to={`/my-jobs/post/update/${data?._id}`}>
+                            Update
+                          </Link>
+                        </button>
+                      </td>
+                      <td>
+                        <button
+                          onClick={() => handleButtonDelete(data?._id)}
+                          className="text-md font-semibold text-red-600"
+                        >
+                          <Link>Delete</Link>
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
         </div>
       </PageTransition>
     </div>

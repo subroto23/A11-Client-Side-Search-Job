@@ -62,7 +62,6 @@ const AuthProvider = ({ children }) => {
               .post("http://localhost:3001/secure/api", loggedInUser, {
                 withCredentials: true,
               })
-              .then((res) => console.log(res.data))
               .catch((err) => console.log(err));
           }
         } else {
