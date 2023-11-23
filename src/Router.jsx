@@ -13,6 +13,7 @@ import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
 import CvSubmitedForm from "./Components/CvSubmit/CvSubmitedForm";
 import MyPostedJobs from "./Components/MyJobs/MyPostedJobs";
 import UpdateJob from "./Components/MyJobUpdate/MyJobUpdate";
+import AppliedJob from "./Components/AppliedJob/AppliedJob";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -37,7 +38,19 @@ const router = createBrowserRouter([
       },
       {
         path: "/my-jobs/post",
-        element: <MyPostedJobs />,
+        element: (
+          <PrivateRoute>
+            <MyPostedJobs />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/apply/job",
+        element: (
+          <PrivateRoute>
+            <AppliedJob />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/my-jobs/post/update/:id",
@@ -79,7 +92,6 @@ const router = createBrowserRouter([
         path: "/submit-cv",
         element: (
           <PrivateRoute>
-            {" "}
             <CvSubmitedForm />
           </PrivateRoute>
         ),

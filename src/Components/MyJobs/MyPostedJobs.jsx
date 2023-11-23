@@ -28,20 +28,20 @@ const MyPostedJobs = () => {
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
-      axiosSecure
-        .delete(`/api/my-jobs/delete/${id}`)
-        .then(() => {
-          if (result.isConfirmed) {
-            Swal.fire({
-              title: "Deleted!",
-              text: "Your file has been deleted.",
-              icon: "success",
-            });
-          }
-          const filter = apiData.filter((data) => data._id !== id);
-          setApiData(filter);
-        })
-        .catch((err) => console.log(err));
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: "Deleted!",
+          text: "Your file has been deleted.",
+          icon: "success",
+        });
+        axiosSecure
+          .delete(`/api/my-jobs/delete/${id}`)
+          .then(() => {
+            const filter = apiData.filter((data) => data._id !== id);
+            setApiData(filter);
+          })
+          .catch((err) => console.log(err));
+      }
     });
   };
   return (

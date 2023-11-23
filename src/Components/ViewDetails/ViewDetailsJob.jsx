@@ -124,9 +124,7 @@ const ViewDetailsJob = () => {
                     : null
                 }
               >
-                <span className="relative z-10">
-                  {disableBtn ? "Disable Apply Button" : "Apply Job"}
-                </span>
+                <span className="relative z-10">Apply Job</span>
               </button>
             </div>
           </div>

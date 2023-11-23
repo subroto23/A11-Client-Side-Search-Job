@@ -55,13 +55,13 @@ const AuthProvider = ({ children }) => {
         const loggedInUser = { email };
         if (currentUser) {
           setUser(currentUser);
-          setLoading(false);
           //
           if (currentUser) {
             axios
               .post("http://localhost:3001/secure/api", loggedInUser, {
                 withCredentials: true,
               })
+              .then(() => setLoading(false))
               .catch((err) => console.log(err));
           }
         } else {
@@ -69,6 +69,7 @@ const AuthProvider = ({ children }) => {
             .post("http://localhost:3001/secure/api/logout", loggedInUser, {
               withCredentials: true,
             })
+            .then(() => setLoading(false))
             .catch((err) => console.log(err));
           setUser(null);
           setLoading(false);
