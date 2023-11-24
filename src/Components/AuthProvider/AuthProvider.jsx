@@ -58,17 +58,25 @@ const AuthProvider = ({ children }) => {
           //
           if (currentUser) {
             axios
-              .post("http://localhost:3001/secure/api", loggedInUser, {
-                withCredentials: true,
-              })
+              .post(
+                "https://job-search-gqqt8w1v5-subroto23.vercel.app/secure/api",
+                loggedInUser,
+                {
+                  withCredentials: true,
+                }
+              )
               .then(() => setLoading(false))
               .catch((err) => console.log(err));
           }
         } else {
           axios
-            .post("http://localhost:3001/secure/api/logout", loggedInUser, {
-              withCredentials: true,
-            })
+            .post(
+              "https://job-search-gqqt8w1v5-subroto23.vercel.app/secure/api/logout",
+              loggedInUser,
+              {
+                withCredentials: true,
+              }
+            )
             .then(() => setLoading(false))
             .catch((err) => console.log(err));
           setUser(null);
