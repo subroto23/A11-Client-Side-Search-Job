@@ -3,11 +3,11 @@ import { FaAngleDoubleRight } from "react-icons/fa";
 import { FaAngleRight } from "react-icons/fa6";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useState } from "react";
 import { Helmet } from "react-helmet";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 const Blogs = () => {
-  const [blogsData, setBlogsData] = useState([]);
   const [parentId, setParentId] = useState(null);
   const cardContainer = {
     hover: { marginTop: "-10px" },
@@ -31,11 +31,19 @@ const Blogs = () => {
       </motion.div>
     );
   };
-  useEffect(() => {
-    axios.get("https://api.npoint.io/0749a376c646416dd7f8").then((res) => {
-      setBlogsData(res.data);
-    });
-  }, []);
+  const { isPending, data: blogsData } = useQuery({
+    queryKey: ["blogs"],
+    queryFn: async () => {
+      const res = await axios.get("https://api.npoint.io/0749a376c646416dd7f8");
+      return res.data;
+    },
+  });
+
+  if (isPending) {
+    return (
+      <div className="border-gray-300 h-20 w-20 my-24 mx-auto animate-spin rounded-full border-8 border-t-green-600" />
+    );
+  }
   return (
     <div className="mt-16">
       <Helmet>

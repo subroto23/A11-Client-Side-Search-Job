@@ -9,15 +9,18 @@ import { Helmet } from "react-helmet";
 const AppliedJob = () => {
   const [apiData, setApiData] = useState([]);
   const [allDatas, setAllDatas] = useState([]);
+  const [loader, setLoader] = useState(false);
   const [selectedData, setSelectedData] = useState("");
   const axiosSecure = UseAxiosSecure();
   const { user } = UseAuth();
   useEffect(() => {
+    setLoader(true);
     axiosSecure
       .get(`/api/apply/jobs/?email=${user?.email}`)
       .then((res) => {
         setApiData(res.data);
         setAllDatas(res.data);
+        setLoader(false);
       })
       .catch((err) => console.log(err));
   }, [axiosSecure, user?.email]);
@@ -35,6 +38,11 @@ const AppliedJob = () => {
       setApiData(allDatas);
     }
   }, [selectedData, allDatas]);
+  if (loader) {
+    return (
+      <div className="border-gray-300 h-20 w-20 my-24 mx-auto animate-spin rounded-full border-8 border-t-green-600" />
+    );
+  }
   return (
     <div className="my-16">
       <Helmet>

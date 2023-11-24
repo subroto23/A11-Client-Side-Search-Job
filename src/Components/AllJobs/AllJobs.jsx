@@ -8,16 +8,19 @@ import { Helmet } from "react-helmet";
 const AllJobs = () => {
   const [jobsData, setJobsData] = useState([]);
   const [jobDatas, setJobDatas] = useState([]);
+  const [loader, setLoader] = useState(false);
   const [searchValueChange, setsearchValueChange] = useState("");
   const [notDataFound, setNotDataFound] = useState("");
   const axiosSecureUrl = UseAxiosSecure();
   useEffect(() => {
+    setLoader(true);
     axiosSecureUrl
       .get("/jobs")
       .then((res) => {
         setJobsData(res?.data);
         setJobDatas(res?.data);
         setNotDataFound("");
+        setLoader(false);
       })
       .catch((err) => console.log(err));
   }, [axiosSecureUrl]);
@@ -39,6 +42,12 @@ const AllJobs = () => {
       setJobsData(jobDatas);
     }
   }, [searchValueChange, jobDatas]);
+
+  if (loader) {
+    return (
+      <div className="border-gray-300 h-20 w-20 my-24 mx-auto animate-spin rounded-full border-8 border-t-green-600" />
+    );
+  }
   return (
     <div>
       <Helmet>

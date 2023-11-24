@@ -9,15 +9,24 @@ import { Helmet } from "react-helmet";
 
 const MyPostedJobs = () => {
   const [apiData, setApiData] = useState([]);
+  const [loader, setLoader] = useState(false);
   const { user } = UseAuth();
   const axiosSecure = UseAxiosSecure();
   useEffect(() => {
+    setLoader(true);
     axiosSecure
       .get(`/api/my-jobs/?email=${user?.email}`)
-      .then((res) => setApiData(res?.data))
+      .then((res) => {
+        setApiData(res?.data);
+        setLoader(false);
+      })
       .catch((err) => console.log(err));
   }, [axiosSecure, user]);
-
+  if (loader) {
+    return (
+      <div className="border-gray-300 h-20 w-20 my-24 mx-auto animate-spin rounded-full border-8 border-t-green-600" />
+    );
+  }
   //Handle Delete Button
   const handleButtonDelete = (id) => {
     Swal.fire({
