@@ -59,7 +59,7 @@ const AuthProvider = ({ children }) => {
           if (currentUser) {
             axios
               .post(
-                "https://job-search-plum.vercel.app//secure/api",
+                "https://job-search-plum.vercel.app/secure/api",
                 loggedInUser,
                 {
                   withCredentials: true,
@@ -71,7 +71,7 @@ const AuthProvider = ({ children }) => {
         } else {
           axios
             .post(
-              "https://job-search-plum.vercel.app//secure/api/logout",
+              "https://job-search-plum.vercel.app/secure/api/logout",
               loggedInUser,
               {
                 withCredentials: true,
