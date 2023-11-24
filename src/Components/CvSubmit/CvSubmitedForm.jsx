@@ -5,6 +5,7 @@ import { useState } from "react";
 import Swal from "sweetalert2";
 import UseAxiosSecure from "../Hooks/UseAxiosSecure";
 import UseAuth from "../Hooks/UseAuth";
+import emailjs from "@emailjs/browser";
 const CvSubmitedForm = () => {
   const [loader, setLoader] = useState(false);
   const location = useLocation();
@@ -13,11 +14,17 @@ const CvSubmitedForm = () => {
   const AxiosRequest = UseAxiosSecure();
   const { user } = UseAuth();
 
+  //
+  const data = {
+    to_name: user?.email,
+    from_name: user?.displayName,
+    message: "Your Application apply is Confirmed.",
+  };
+
   //Handle Submited Resume
   const handleSubmitResume = (e) => {
     e.preventDefault();
     setLoader(true);
-
     const resumeUrl = e.target.resumeUrl.value;
     const email = user.email;
     const name = user.displayName;
@@ -29,6 +36,21 @@ const CvSubmitedForm = () => {
         const count = Number(applyCount) + 1;
         AxiosRequest.patch(`/jobs/job?id=${_id}`, { applyCount: count })
           .then(() => {
+            emailjs
+              .send(
+                "service_w1wqrp9",
+                "template_j6rkvvo",
+                data,
+                "CspRuIYP57Sr9m8Nh"
+              )
+              .then(
+                function (response) {
+                  console.log("SUCCESS!", response.status, response.text);
+                },
+                function (error) {
+                  console.log("FAILED...", error);
+                }
+              );
             setLoader(false);
             e.target.reset();
             Swal.fire("Apply Successfully");

@@ -1,18 +1,8 @@
-import styles from "./SubscribeNews.module.css";
-import { MdOutlineAlternateEmail } from "react-icons/md";
 const SubscribeNewsletter = () => {
   return (
     <div className="flex justify-center">
-      <div className=" bg-white md:my-6 w-11/12 border relative">
-        <div className={`text-2xl text-green-600 font-bold md:block hidden`}>
-          <span className={styles.animated1}>
-            <MdOutlineAlternateEmail />
-          </span>
-          <span className={styles.animated2}>
-            <MdOutlineAlternateEmail />
-          </span>
-        </div>
-        <div className="flex justify-center  pb-6  flex-col items-center px-2 ">
+      <div className=" bg-white md:my-6 w-11/12 border border-b-0 border-gray-200 relative">
+        <div className="flex justify-center py-6 flex-col items-center px-2">
           <h1 className="text-gray-500 md:text-4xl text-2xl font-semibold mt-6 md:mt-0 md:mb-12 mb-6">
             Subscribe Newsletter
           </h1>
