@@ -59,19 +59,22 @@ const AuthProvider = ({ children }) => {
           if (currentUser) {
             axios
               .post(
-                "https://job-search-plum.vercel.app//secure/api",
+                "https://job-search-plum.vercel.app/secure/api",
                 loggedInUser,
                 {
                   withCredentials: true,
                 }
               )
-              .then(() => setLoading(false))
+              .then((res) => {
+                setLoading(false);
+                console.log(res);
+              })
               .catch((err) => console.log(err));
           }
         } else {
           axios
             .post(
-              "https://job-search-plum.vercel.app//secure/api/logout",
+              "https://job-search-plum.vercel.app/secure/api/logout",
               loggedInUser,
               {
                 withCredentials: true,
@@ -87,6 +90,7 @@ const AuthProvider = ({ children }) => {
       []
     );
   });
+
   //Pass Provider Value Of Object
   const authInfo = {
     user,

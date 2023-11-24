@@ -92,7 +92,7 @@ const MyPostedJobs = () => {
                 </tr>
               </thead>
               <tbody>
-                {apiData.map((data) => {
+                {apiData?.map((data) => {
                   return (
                     <tr key={data._id}>
                       <td>

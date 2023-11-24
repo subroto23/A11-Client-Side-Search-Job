@@ -98,7 +98,7 @@ const AllJobs = () => {
               </>
             )}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {jobsData.map((data) => (
+              {jobsData?.map((data) => (
                 <AllJob key={data._id} data={data} />
               ))}
             </div>
