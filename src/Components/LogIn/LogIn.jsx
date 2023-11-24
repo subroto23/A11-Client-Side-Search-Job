@@ -4,6 +4,7 @@ import PageTransition from "../PageTransition/PageTransition";
 import Swal from "sweetalert2";
 import { useState } from "react";
 import UseAuth from "../Hooks/UseAuth";
+import { Helmet } from "react-helmet";
 
 const LogIn = () => {
   const [errorLogin, setErrorLogIn] = useState("");
@@ -50,6 +51,10 @@ const LogIn = () => {
   };
   return (
     <PageTransition>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Login Page || Job Search </title>
+      </Helmet>
       <div className="bg-gradient-to-r from-green-600 to-green-500 flex flex-col justify-center items-center md:h-72 h-32">
         <h1 className="md:text-5xl text-white font-bold">Log In</h1>
         <p className="text-white md:mt-6 md:text-xl md:font-medium text-xs mt-2 flex justify-center items-center">

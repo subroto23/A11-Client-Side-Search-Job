@@ -2,22 +2,10 @@ import { FaRegUser } from "react-icons/fa";
 import { CiCalendar } from "react-icons/ci";
 import { FaSackDollar } from "react-icons/fa6";
 import { IoArrowForward } from "react-icons/io5";
-import { Link, useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
+import { Link } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
-import UseAuth from "../Hooks/UseAuth";
 
 const AllJob = ({ data }) => {
-  const { user } = UseAuth();
-  const navigate = useNavigate();
-  const handleDetails = () => {
-    if (!user) {
-      toast("You Have to Login First to View Details");
-    } else {
-      navigate(`/job/${data?._id}`);
-    }
-  };
-  console.log(user);
   return (
     <div
       key={data?._id}
@@ -29,7 +17,10 @@ const AllJob = ({ data }) => {
         </div>
         <div className="md:col-span-6 ml-6 w-full">
           <div>
-            <h1 className="text-2xl font-bold">{data?.jobTitle}</h1>
+            <div>
+              <h1 className="text-2xl font-bold">{data?.jobTitle}</h1>
+            </div>
+
             <div className="mb-1 flex gap-2">
               <p className="flex text-green-600 font-medium text-xs items-center my-1">
                 <span className="mr-2">
@@ -58,25 +49,30 @@ const AllJob = ({ data }) => {
                 </span>
               </p>
             </div>
-            <p className="flex text-sm font-medium text-green-600 items-center my-1">
-              <span className="mr-2 text-red-500 text-lg">
-                <CiCalendar />
-              </span>{" "}
-              <span className="mr-1">Deadline :</span>{" "}
-              {data?.endDate.slice(0, 10)}
-            </p>
+            <div>
+              <p className="flex text-sm font-medium text-green-600 items-center my-1">
+                <span className="mr-2 text-red-500 text-lg">
+                  <CiCalendar />
+                </span>{" "}
+                <span className="mr-1">Deadline :</span>{" "}
+                {data?.endDate.slice(0, 10)}
+              </p>
+              <span className="indicator-item badge bg-green-500 text-white">
+                apply: {data.applyCount}
+              </span>
+            </div>
           </div>
         </div>
         <div className="md:col-span-4">
           <button className="mx-5 w-3/4 normal-case bg-gradient-to-l from-green-600 to-green-500 text-white py-2 px-4 font-medium mb-6">
             <span className="relative z-10">{data?.selectedCatagory}</span>
           </button>
-          <div
-            onClick={handleDetails}
-            className="mx-5 w-3/4 normal-case btn-gradent-swipe-l2r"
-          >
+          <div className="mx-5 w-3/4 normal-case btn-gradent-swipe-l2r">
             <button>
-              <Link className="flex items-center justify-center">
+              <Link
+                to={`/job/${data?._id}`}
+                className="flex items-center justify-center"
+              >
                 <span className="relative z-10">Details</span>
                 <span className="ml-1 relative z-10">
                   <IoArrowForward />
@@ -84,7 +80,6 @@ const AllJob = ({ data }) => {
               </Link>
             </button>
           </div>
-          <ToastContainer />
         </div>
       </div>
     </div>

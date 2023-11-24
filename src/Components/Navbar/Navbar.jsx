@@ -100,7 +100,7 @@ const Navbar = () => {
                 alt=""
               />
               <span className="text-green-500 font-semibold hover:text-gray-500">
-                SearchJobs
+                JobSearch
               </span>
             </NavLink>
           </div>

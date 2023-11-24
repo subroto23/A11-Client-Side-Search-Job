@@ -4,6 +4,7 @@ import { FaAngleDoubleRight } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import UseAxiosSecure from "../Hooks/UseAxiosSecure";
 import AllJob from "./AllJob";
+import { Helmet } from "react-helmet";
 const AllJobs = () => {
   const [jobsData, setJobsData] = useState([]);
   const [jobDatas, setJobDatas] = useState([]);
@@ -40,6 +41,10 @@ const AllJobs = () => {
   }, [searchValueChange, jobDatas]);
   return (
     <div>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>All Jobs Page || SearchJob </title>
+      </Helmet>
       <div className="mt-16">
         <PageTransition>
           <div className="bg-gradient-to-r from-green-600 to-green-500">

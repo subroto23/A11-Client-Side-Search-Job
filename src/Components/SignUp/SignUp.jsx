@@ -4,6 +4,7 @@ import PageTransition from "../PageTransition/PageTransition";
 import Swal from "sweetalert2";
 import UseAuth from "../Hooks/UseAuth";
 import { useState } from "react";
+import { Helmet } from "react-helmet";
 const SignUp = () => {
   const { handleRegistation, handleUpdateUser, handleGLogin } = UseAuth();
   const [message, setMessage] = useState(null);
@@ -54,6 +55,10 @@ const SignUp = () => {
   };
   return (
     <PageTransition>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Signup Page || Job Search </title>
+      </Helmet>
       <div className="bg-gradient-to-r from-green-600 to-green-500 flex flex-col justify-center items-center md:h-72 h-32">
         <h1 className="md:text-5xl text-white font-bold">
           Create Your Account

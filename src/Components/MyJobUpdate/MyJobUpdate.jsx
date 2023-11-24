@@ -8,6 +8,7 @@ import UseAxiosSecure from "../Hooks/UseAxiosSecure";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const UpdateJob = () => {
   const [selectedCatagory, setSelectedCatagory] = useState(null);
@@ -47,6 +48,10 @@ const UpdateJob = () => {
   };
   return (
     <div>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Update your Job Post page || Job Search</title>
+      </Helmet>
       <div className="mt-16">
         <PageTransition>
           <div className="bg-gradient-to-r from-green-600 to-green-500">

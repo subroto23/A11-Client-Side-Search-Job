@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import UseAxiosSecure from "../Hooks/UseAxiosSecure";
 import UseAuth from "../Hooks/UseAuth";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const MyPostedJobs = () => {
   const [apiData, setApiData] = useState([]);
@@ -46,6 +47,10 @@ const MyPostedJobs = () => {
   };
   return (
     <div className="mt-16">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Posted Job Page || Job Search </title>
+      </Helmet>
       <PageTransition>
         <div className="bg-gradient-to-r from-green-600 to-green-500">
           <div className="mx-auto max-w-7xl flex flex-col justify-center items-center md:h-72 h-32">

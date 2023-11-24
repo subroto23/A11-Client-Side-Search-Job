@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import UseAuth from "../Hooks/UseAuth";
 import { useEffect, useState } from "react";
 import moment from "moment";
+import { Helmet } from "react-helmet";
 const ViewDetailsJob = () => {
   const [disableBtn, setDisableBtn] = useState(false);
   const loadData = useLoaderData();
@@ -54,6 +55,10 @@ const ViewDetailsJob = () => {
   };
   return (
     <div className="mt-16">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Job Search || {jobTitle}</title>
+      </Helmet>
       <PageTransition>
         <div className="bg-gradient-to-r from-green-600 to-green-500 flex flex-col justify-center items-center md:h-72 h-32">
           <h1 className="md:text-5xl text-white font-bold">Job Details</h1>

@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 import UseAxiosSecure from "../Hooks/UseAxiosSecure";
 import UseAuth from "../Hooks/UseAuth";
 import emailjs from "@emailjs/browser";
+import { Helmet } from "react-helmet";
 const CvSubmitedForm = () => {
   const [loader, setLoader] = useState(false);
   const location = useLocation();
@@ -61,6 +62,10 @@ const CvSubmitedForm = () => {
   };
   return (
     <div className="mt-16">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Job Search || Resume Suvmit</title>
+      </Helmet>
       <PageTransition>
         <div className="bg-gradient-to-r from-green-600 to-green-500 flex flex-col justify-center items-center md:h-72 h-32">
           <h1 className="md:text-5xl text-white font-bold">Submit Resume</h1>

@@ -10,6 +10,7 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import Swal from "sweetalert2";
 import moment from "moment/moment";
+import { Helmet } from "react-helmet";
 
 const AddJobs = () => {
   const [selectedCatagory, setSelectedCatagory] = useState(null);
@@ -58,6 +59,10 @@ const AddJobs = () => {
   };
   return (
     <div>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Post Your Job || Job Search</title>
+      </Helmet>
       <div className="mt-16">
         <PageTransition>
           <div className="bg-gradient-to-r from-green-600 to-green-500">

@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Helmet } from "react-helmet";
 const Blogs = () => {
   const [blogsData, setBlogsData] = useState([]);
   const [parentId, setParentId] = useState(null);
@@ -37,6 +38,10 @@ const Blogs = () => {
   }, []);
   return (
     <div className="mt-16">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Blogs Page || Job Search</title>
+      </Helmet>
       <PageTransition>
         <div className="bg-gradient-to-r from-green-600 to-green-500">
           <div className="mx-auto max-w-7xl flex flex-col justify-center items-center md:h-72 h-32">

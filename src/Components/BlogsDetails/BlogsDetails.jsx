@@ -10,11 +10,16 @@ import { FaArrowLeft } from "react-icons/fa";
 import { FaArrowRight } from "react-icons/fa";
 import JobCatagoryRightBar from "../JobCatagoryRightBar/JobCatagoryRightBar";
 import JobLocation from "../JobLocation/JobLocation";
+import { Helmet } from "react-helmet";
 const BlogsDetails = () => {
   const { title, thubnail, descriptions, createdDate, creatorName } =
     useLoaderData();
   return (
     <div className="mt-16">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Job Search || {title}</title>
+      </Helmet>
       <PageTransition>
         <div className="bg-gradient-to-r from-green-600 to-green-500">
           <div className="mx-auto max-w-7xl flex flex-col justify-center items-center md:h-72 h-32">

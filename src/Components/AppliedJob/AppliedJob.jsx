@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import UseAxiosSecure from "../Hooks/UseAxiosSecure";
 import UseAuth from "../Hooks/UseAuth";
+import { Helmet } from "react-helmet";
 
 const AppliedJob = () => {
   const [apiData, setApiData] = useState([]);
@@ -36,6 +37,10 @@ const AppliedJob = () => {
   }, [selectedData, allDatas]);
   return (
     <div className="my-16">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Applied Job Page || Job Search</title>
+      </Helmet>
       <PageTransition>
         <div className="bg-gradient-to-r from-green-600 to-green-500">
           <div className="mx-auto max-w-7xl flex flex-col justify-center items-center md:h-72 h-32">
@@ -56,7 +61,7 @@ const AppliedJob = () => {
         {allDatas.length > 0 ? (
           <>
             <div className="mx-auto max-w-7xl md:my-12 mt-6">
-              <div className="grid grid-cols-12 bg-gradient-to-t from-green-600 to-green-700 border-b py-8 px-4 items-center md:gap-x-12 gap-x-2">
+              <div className="grid grid-cols-12 rounded-lg bg-gradient-to-b from-green-500 to-green-400 border-b py-8 px-4 items-center md:gap-x-12 gap-x-2">
                 <div className="col-span-8">
                   <form onSubmit={handleSearchSubmit}>
                     <div className="relative">
