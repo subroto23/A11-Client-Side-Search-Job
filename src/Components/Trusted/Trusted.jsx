@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const Trusted = () => {
   return (
     <section className="text-gray-600 body-font max-w-7xl mx-auto">
-      <div className="container mx-auto  px-5 md:py-16 py-8 flex md:flex-row flex-col items-center md:gap-0 gap-12 justify-between">
+      <div className="container mx-auto  px-5 md:my-24 my-8 flex md:flex-row flex-col items-center md:gap-0 gap-12 justify-between">
         <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6  md:mb-0">
           <div className="grid md:grid-cols-3 grid-cols-1">
             <div className="col-span-2">

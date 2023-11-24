@@ -2,8 +2,22 @@ import { FaRegUser } from "react-icons/fa";
 import { CiCalendar } from "react-icons/ci";
 import { FaSackDollar } from "react-icons/fa6";
 import { IoArrowForward } from "react-icons/io5";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import UseAuth from "../Hooks/UseAuth";
+
 const AllJob = ({ data }) => {
+  const { user } = UseAuth();
+  const navigate = useNavigate();
+  const handleDetails = () => {
+    if (!user) {
+      toast("You Have to Login First to View Details");
+    } else {
+      navigate(`/job/${data?._id}`);
+    }
+  };
+  console.log(user);
   return (
     <div
       key={data?._id}
@@ -57,17 +71,20 @@ const AllJob = ({ data }) => {
           <button className="mx-5 w-3/4 normal-case bg-gradient-to-l from-green-600 to-green-500 text-white py-2 px-4 font-medium mb-6">
             <span className="relative z-10">{data?.selectedCatagory}</span>
           </button>
-          <div className="mx-5 w-3/4 normal-case btn-gradent-swipe-l2r">
-            <Link
-              to={`/job/${data?._id}`}
-              className="flex items-center justify-center"
-            >
-              <span className="relative z-10">Details</span>
-              <span className="ml-1 relative z-10">
-                <IoArrowForward />
-              </span>
-            </Link>
+          <div
+            onClick={handleDetails}
+            className="mx-5 w-3/4 normal-case btn-gradent-swipe-l2r"
+          >
+            <button>
+              <Link className="flex items-center justify-center">
+                <span className="relative z-10">Details</span>
+                <span className="ml-1 relative z-10">
+                  <IoArrowForward />
+                </span>
+              </Link>
+            </button>
           </div>
+          <ToastContainer />
         </div>
       </div>
     </div>

@@ -11,8 +11,8 @@ import { CiDeliveryTruck } from "react-icons/ci";
 const ChooseCatagory = () => {
   return (
     <div className="max-w-7xl mx-auto">
-      <div className="text-center md:mt-24 md:mb-12 my-8 ">
-        <h1 className="md:text-5xl text-3xl font-bold  text-gray-600 md:font-semibold my-12">
+      <div className="text-center">
+        <h1 className="md:text-4xl text-2xl font-bold text-gray=500 my-12">
           Choose Your Desire Category
         </h1>
         <div className="grid md:grid-cols-5 grid-cols-1 md:px-0 px-3">
