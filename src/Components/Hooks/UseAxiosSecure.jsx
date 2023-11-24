@@ -4,7 +4,7 @@ import UseAuth from "./UseAuth";
 import { useNavigate } from "react-router-dom";
 
 const axiosSecureUrl = axios.create({
-  baseURL: "https://job-search-gqqt8w1v5-subroto23.vercel.app",
+  baseURL: "https://job-search-plum.vercel.app/",
   withCredentials: true,
 });
 

@@ -61,7 +61,7 @@ const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(
-            `https://job-search-gqqt8w1v5-subroto23.vercel.app/api/my-jobs/job/${params.id}`,
+            `https://job-search-plum.vercel.app//api/my-jobs/job/${params.id}`,
             {
               credentials: "include",
             }
@@ -75,9 +75,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(
-            `https://job-search-gqqt8w1v5-subroto23.vercel.app/jobs/job/${params.id}`
-          ),
+          fetch(`https://job-search-plum.vercel.app//jobs/job/${params.id}`),
       },
       {
         path: "/add-jobs",
