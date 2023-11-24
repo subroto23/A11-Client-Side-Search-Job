@@ -38,18 +38,6 @@ const AuthProvider = ({ children }) => {
   //Sign Out
   const handleLogOut = () => {
     setLoading(true);
-    const email = user?.email;
-    const loggedInUser = { email };
-    axios
-      .post(
-        "https://job-search-plum.vercel.app/secure/api/logout",
-        loggedInUser,
-        {
-          withCredentials: true,
-        }
-      )
-      .then(() => setLoading(false))
-      .catch((err) => console.log(err));
     return signOut(auth);
   };
 
