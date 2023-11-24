@@ -2,7 +2,6 @@ import { Link, NavLink } from "react-router-dom";
 import { FaUserPlus } from "react-icons/fa";
 import { GrLogin } from "react-icons/gr";
 import { IoMenuSharp } from "react-icons/io5";
-import axios from "axios";
 import UseAuth from "../Hooks/UseAuth";
 const Navbar = () => {
   const { user, loading, handleLogOut } = UseAuth();
@@ -135,20 +134,7 @@ const Navbar = () => {
                     </button>
                   </li>
                   <li className="hover:text-green-500 hover:bg-white hover:font-semibold py-2">
-                    <button onClick={() => {
-                  const email = user?.email;
-    const loggedInUser = { email };
-    axios
-      .post(
-        "https://job-search-plum.vercel.app/secure/api/logout",
-        loggedInUser,
-        {
-          withCredentials: true,
-        }
-      )
-      .then(() => setLoading(false))
-      .catch((err) => console.log(err));
-                  handleLogOut()}>
+                    <button onClick={() => handleLogOut()>
                       <Link>Logout</Link>
                     </button>
                   </li>
