@@ -38,6 +38,21 @@ const AuthProvider = ({ children }) => {
   //Sign Out
   const handleLogOut = () => {
     setLoading(true);
+    const email = user?.email;
+    const loggedInUser = { email };
+    axios
+      .post(
+        "https://job-search-plum.vercel.app/secure/api/logout",
+        loggedInUser,
+        {
+          withCredentials: true,
+        }
+      )
+      .then((res) => {
+        console.log("Logout" + res.data);
+        setLoading(false);
+      })
+      .catch((err) => console.log(err));
     return signOut(auth);
   };
 
@@ -71,21 +86,6 @@ const AuthProvider = ({ children }) => {
               })
               .catch((err) => console.log(err));
           }
-        } else {
-          axios
-            .post(
-              "https://job-search-plum.vercel.app/secure/api/logout",
-              loggedInUser,
-              {
-                withCredentials: true,
-              }
-            )
-            .then((res) => {
-              console.log("Logout" + res.data);
-              setLoading(false);
-            })
-            .catch((err) => console.log(err));
-          setUser(null);
         }
         return () => unSubscribe();
       },
