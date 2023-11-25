@@ -134,7 +134,7 @@ const Navbar = () => {
                     </button>
                   </li>
                   <li className="hover:text-green-500 hover:bg-white hover:font-semibold py-2">
-                    <button onClick={() => handleLogOut()}>
+                    <button onClick={() => handleLogOut()>
                       <Link>Logout</Link>
                     </button>
                   </li>
