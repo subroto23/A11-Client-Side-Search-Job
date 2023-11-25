@@ -82,7 +82,7 @@ const AuthProvider = ({ children }) => {
               )
               .then((res) => {
                 setLoading(false);
-                console.log(res);
+                console.log(res.data + "Log In");
               })
               .catch((err) => console.log(err));
           }
