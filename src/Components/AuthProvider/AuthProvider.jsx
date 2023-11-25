@@ -81,7 +81,7 @@ const AuthProvider = ({ children }) => {
               }
             )
             .then((res) => {
-              console.log(res.data);
+              console.log("Logout" + res.data);
               setLoading(false);
             })
             .catch((err) => console.log(err));
