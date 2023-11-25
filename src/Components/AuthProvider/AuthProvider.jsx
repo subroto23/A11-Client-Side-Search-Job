@@ -92,10 +92,12 @@ const AuthProvider = ({ children }) => {
                 withCredentials: true,
               }
             )
-            .then(() => setLoading(false))
+            .then((res) => {
+              console.log(res.data);
+              setLoading(false);
+            })
             .catch((err) => console.log(err));
           setUser(null);
-          setLoading(false);
         }
         return () => unSubscribe();
       },
